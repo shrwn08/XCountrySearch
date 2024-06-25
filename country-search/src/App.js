@@ -15,8 +15,10 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get("https://restcountries.com/v3.1/all");
-        console.log(response.data);
-        setCountryData(response.data)
+        if(response.status === 200){
+          setCountryData(response.data)
+        }
+        console.log(response.status)
       } catch (error) {
         console.log('unable to fetchData', error);
       }
